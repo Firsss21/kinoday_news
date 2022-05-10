@@ -21,7 +21,7 @@ public class News {
     @Column
     String name;
 
-    @Column
+    @Column(columnDefinition="TEXT")
     String text;
 
     @Column
