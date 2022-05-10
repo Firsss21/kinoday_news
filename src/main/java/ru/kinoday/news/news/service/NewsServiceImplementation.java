@@ -1,5 +1,6 @@
 package ru.kinoday.news.news.service;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -9,10 +10,10 @@ import ru.kinoday.news.news.model.News;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class NewsServiceImplementation implements NewsService{
 
-    @Autowired
-    NewsRepository newsRepo;
+    private NewsRepository newsRepo;
 
     @Override
     public News getNewsById(long id) {
@@ -48,5 +49,10 @@ public class NewsServiceImplementation implements NewsService{
     @Override
     public void removeNews(long id) {
         newsRepo.deleteById(id);
+    }
+
+    @Override
+    public void removeAllNews() {
+        newsRepo.deleteAll();
     }
 }
