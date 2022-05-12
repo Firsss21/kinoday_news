@@ -24,9 +24,6 @@ public class News {
     @Column(columnDefinition="TEXT")
     String text;
 
-    @Column
-    int views;
-
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
