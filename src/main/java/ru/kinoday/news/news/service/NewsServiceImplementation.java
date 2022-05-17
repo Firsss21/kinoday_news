@@ -20,7 +20,6 @@ public class NewsServiceImplementation implements NewsService{
         News byId = newsRepo.getById(id);
         return byId;
     }
-
     @Override
     public List<News> getAllNews() {
         return newsRepo.findAll();

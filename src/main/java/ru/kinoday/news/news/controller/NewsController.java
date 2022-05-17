@@ -1,10 +1,13 @@
 package ru.kinoday.news.news.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.kinoday.news.news.model.News;
+import ru.kinoday.news.news.model.NewsDto;
 import ru.kinoday.news.news.service.NewsService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -38,14 +41,10 @@ public class NewsController {
         newsService.editNews(news);
     }
 
-    @PostMapping
-    public void addNews(News news) {
-        newsService.addNews(news);
-    }
+    @PostMapping(path= "/", consumes = "application/json", produces = "application/json")
+    public void addNews(@Valid @RequestBody NewsDto news, BindingResult br) {
 
-    // create
-    // read
-    // delete
-    // edit
-    // crud all koroche
+        if (!br.hasErrors())
+            newsService.addNews(new News(news.getName(), news.getText()));
+    }
 }

@@ -12,6 +12,5 @@ public interface NewsService {
     void editNews(News news);
     void removeNews(News news);
     void removeNews(long id);
-
     void removeAllNews();
 }
